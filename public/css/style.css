@@ -22,7 +22,7 @@ body {
     width: 50%;
 }
 
-form {
+form.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,7 +36,7 @@ form {
     border-radius: 68px;
 }
 
-button {
+.login-button {
     background: #643E14F9 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
     border-radius: 44px;
@@ -80,4 +80,105 @@ input {
         margin: 2em;
     }
 
+}
+
+.base-container {
+    background: transparent linear-gradient(180deg, #7D4E18F9 0%, #563A1AF9 100%) 0% 0% no-repeat padding-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+main {
+    height: 100%;
+    width: 80%;
+}
+
+header {
+    width: 100%;
+    height: 30%;
+    background: #FFFFFF4D 0% 0% no-repeat padding-box;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    height: 70%;
+    background: #FFFFFF70 0% 0% no-repeat padding-box;
+}
+
+section.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+header>img {
+    height: 50%;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style-type: none;    
+    width: 100%;
+    height: 15%;
+    padding: 0;
+    display: flex;
+}
+
+ul>li {
+    float:left;
+    background: #563A1AF9 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    width: 25%;
+    height: 100%;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+ul a {
+    height: 100%;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+}
+
+a>i {
+    margin-right: 0.75em;
+}
+
+form.option {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.search-bar>form>input {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 23px;
+    width: 100%;
+    text-align: center;
+    color: gray;
+    margin-top: 1em;
+    box-sizing: border-box;
 }
