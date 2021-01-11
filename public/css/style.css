@@ -36,7 +36,7 @@ form.login {
     border-radius: 68px;
 }
 
-.login-button {
+button {
     background: #643E14F9 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
     border-radius: 44px;
@@ -48,7 +48,7 @@ form.login {
     line-height: 2.5em;
 }
 
-input {
+input, textarea {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid gray;

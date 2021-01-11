@@ -1,0 +1,12 @@
+section.add-book {
+    display: flex;
+    justify-content: center;
+    padding-left: 2em;
+    flex-direction: column;
+}
+
+.add-book > form {
+    margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+}
