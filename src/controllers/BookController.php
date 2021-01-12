@@ -2,14 +2,24 @@
 
 require_once 'AppController.php';
 require_once __DIR__ .'/../models/Book.php';
+require_once __DIR__.'/../repository/BookRepository.php';
 
-class ProjectController extends AppController {
+class BookController extends AppController {
 
     const MAX_FILE_SIZE = 1024*1024;
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $message = [];
+    private $bookRepository;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->bookRepository = new BookRepository;
+    }
+
 
     public function addBook()
     {
@@ -20,7 +30,8 @@ class ProjectController extends AppController {
             );
 
             // TODO create new project object and save it in database
-            $project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $book = new Book($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $this->bookRepository->addBook($book);
 
             return $this->render('home', ['messages' => $this->message]);
         }
