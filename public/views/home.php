@@ -2,6 +2,8 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/books.css">
+
     <script src="https://kit.fontawesome.com/55ca12752b.js" crossorigin="anonymous"></script>
     <title>HOME</title>
 </head>
@@ -38,18 +40,26 @@
                     </li>
                 </ul>
             </header>
-            <section class="home">
+            <section class="options">
                 <div class="search-bar">
-                    <form class="option">
-                        <i class="fas fa-book fa-8x"></i>
-                        <input placeholder="find a book">
+                    <form>
+                        <input placeholder="search book/author">
                     </form>
                 </div>
-                <div class="search-bar">
-                    <form class="option">
-                        <i class="fas fa-user fa-8x"></i>
-                        <input placeholder="find an author"> 
-                    </form>
+                <div class="add-book">
+                    <a href="#" class="add-book-button">
+                        <i class="fas fa-plus"></i> add book
+                    </a>
+                </div>
+            </section>
+            <section class="books">
+                <div id="book-1">
+                    <img src="public/uploads/przerobione.jpg">
+                    <div>
+                        <h3>Szlakami Roztocza</h3>
+                        <p>Natalia Kusiak</p>
+                        <i class="fas fa-star"> 10.0</i>
+                    </div>
                 </div>
             </section>
         </main>

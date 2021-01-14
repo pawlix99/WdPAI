@@ -1,12 +1,64 @@
-section.add-book {
+section.books {
+    height: 60%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 2em;
+    padding: 0 1em 0 1em;
+}
+
+.books>div>img {
+    height: 50%;
+    width: 40%;
+}
+
+.books>div>div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding-left: 2em;
+    align-items: center;
+}
+
+.books>div>div>h3 {
+    margin: 0;
+    text-align: center;
+    color: black;
+}
+
+.books>div>div>p {
+    margin: 0;
+    text-align: center;
+    color: #4b4b4b;
+}
+
+.books>div>div>i {
+    margin-top: 0.5em;
+    color: yellow;
+    text: black;
+}
+
+.books>div {
+    border-radius: 1em 1em 0 0;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top:1em;
+    justify-content: center;
+    align-items: center;
+}
+
+section.add-book {
+    width: 100%;
+    height: 70%;
+    display: flex;
     flex-direction: column;
 }
 
 .add-book > form {
-    margin-left: 2em;
+    padding-left: 2em;
     display: flex;
     flex-direction: column;
+}
+
+.add-book>h1{
+    padding-left: 2em;
 }
