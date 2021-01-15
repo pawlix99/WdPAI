@@ -9,7 +9,7 @@ class BookRepository extends Repository
     public function getBook(int $id): ?Book
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM books WHERE id = :id
+            SELECT * FROM public.books WHERE id = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -35,6 +35,7 @@ class BookRepository extends Repository
             VALUES (?, ?, ?, ?, ?)
         ');
 
+        //TODO you should get this value from logged user session
         $assingedById = 1;
 
         $stmt->execute([
@@ -43,7 +44,6 @@ class BookRepository extends Repository
             $date->format('Y-m-d'),
             $assingedById,
             $book->getImage()
-
         ]);
     }
 
@@ -66,5 +66,18 @@ class BookRepository extends Repository
         }
 
         return $result;
+    }
+
+    public function getBookByTitle(string $searchString)
+    {
+        $searchString = '%' . strtolower($searchString) . '%';
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM books WHERE LOWER(title) LIKE :search OR LOWER(author) LIKE :search
+        ');
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

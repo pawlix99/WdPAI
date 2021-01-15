@@ -4,7 +4,8 @@ require_once 'AppController.php';
 require_once __DIR__ .'/../models/Book.php';
 require_once __DIR__.'/../repository/BookRepository.php';
 
-class BookController extends AppController {
+class BookController extends AppController
+{
 
     const MAX_FILE_SIZE = 1024*1024;
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
@@ -13,14 +14,14 @@ class BookController extends AppController {
     private $message = [];
     private $bookRepository;
 
-
     public function __construct()
     {
         parent::__construct();
         $this->bookRepository = new BookRepository;
     }
 
-    public function home() {
+    public function home()
+    {
         $books = $this->bookRepository->getBooks();
         $this->render('home', ['books' => $books]);
     }
@@ -37,9 +38,28 @@ class BookController extends AppController {
             $book = new Book($_POST['title'], $_POST['author'], $_FILES['file']['name']);
             $this->bookRepository->addBook($book);
 
-            return $this->render('home', ['messages' => $this->message]);
+            return $this->render('home', [
+                'messages' => $this->message,
+                'home' => $this->bookRepository->getBooks()
+            ]);
         }
+
         return $this->render('add-book', ['messages' => $this->message]);
+    }
+
+    public function search()
+    {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->bookRepository->getBookByTitle($decoded['search']));
+        }
     }
 
     private function validate(array $file): bool

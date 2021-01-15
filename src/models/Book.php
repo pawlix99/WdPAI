@@ -4,6 +4,7 @@ class Book {
     private $title;
     private $author;
     private $image;
+    private
 
     public function __construct($title, $author, $image)
     {

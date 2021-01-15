@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/books.css">
 
     <script src="https://kit.fontawesome.com/55ca12752b.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="public/js/search.js" defer></script>
     <title>HOME</title>
 </head>
 
@@ -42,9 +43,7 @@
             </header>
             <section class="options">
                 <div class="search-bar">
-                    <form>
-                        <input placeholder="search book/author">
-                    </form>
+                    <input placeholder="search book/author">
                 </div>
                 <div class="add-book">
                     <a href="#" class="add-book-button">
@@ -67,3 +66,14 @@
         </main>
     </div>
 </body>
+
+<template id="book-template">
+    <div id="">
+        <img src="">
+        <div>
+            <h3>title</h3>
+            <p>author</p>
+            <i class="fas fa-star"> 0.0</i>
+        </div>
+    </div>
+</template>

@@ -10,5 +10,6 @@ Router::get('home', 'BookController');
 Router::post('login', 'SecurityController');
 Router::post('addBook', 'BookController');
 Router::post('register','SecurityController');
+Router::post('search','BookController');
 
 Router::run($path);
