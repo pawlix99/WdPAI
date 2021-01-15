@@ -38,7 +38,7 @@ class UserRepository extends Repository
 
         $stmt->execute([
             $user->getName(),
-            $user->getSurname()
+            $user->getSurname(),
         ]);
 
         $stmt = $this->database->connect()->prepare('

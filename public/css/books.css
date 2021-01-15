@@ -4,6 +4,7 @@ section.books {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 2em;
     padding: 0 1em 0 1em;
+    overflow: auto;
 }
 
 .books>div>img {
@@ -38,7 +39,7 @@ section.books {
 
 .books>div {
     border-radius: 1em 1em 0 0;
-    height: 50%;
+    height: 200px;
     display: flex;
     flex-direction: column;
     margin-top:1em;
@@ -61,4 +62,8 @@ section.add-book {
 
 .add-book>h1{
     padding-left: 2em;
+}
+
+.add-book>form>input {
+    margin: 0;
 }

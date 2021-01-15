@@ -53,14 +53,16 @@
                 </div>
             </section>
             <section class="books">
+                <?php foreach ($books as $book): ?>
                 <div id="book-1">
-                    <img src="public/uploads/przerobione.jpg">
+                    <img src="public/uploads/<?= $book->getImage(); ?>">
                     <div>
-                        <h3>Szlakami Roztocza</h3>
-                        <p>Natalia Kusiak</p>
+                        <h3><?= $book->getTitle(); ?></h3>
+                        <p><?= $book->getAuthor(); ?></p>
                         <i class="fas fa-star"> 10.0</i>
                     </div>
                 </div>
+                <?php endforeach; ?>
             </section>
         </main>
     </div>

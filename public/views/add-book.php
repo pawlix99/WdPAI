@@ -53,6 +53,7 @@
                         ?>
                     </div>
                     <input name="title" type="text" placeholder="title">
+                    <input name="author" type="text" placeholder="author">
                     <textarea name="description" rows=5 placeholder="description"></textarea>
 
                     <input type="file" name="file"/><br/>

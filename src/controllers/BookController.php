@@ -20,6 +20,10 @@ class BookController extends AppController {
         $this->bookRepository = new BookRepository;
     }
 
+    public function home() {
+        $books = $this->bookRepository->getBooks();
+        $this->render('home', ['books' => $books]);
+    }
 
     public function addBook()
     {
@@ -30,7 +34,7 @@ class BookController extends AppController {
             );
 
             // TODO create new project object and save it in database
-            $book = new Book($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $book = new Book($_POST['title'], $_POST['author'], $_FILES['file']['name']);
             $this->bookRepository->addBook($book);
 
             return $this->render('home', ['messages' => $this->message]);

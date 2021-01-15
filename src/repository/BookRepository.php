@@ -9,7 +9,7 @@ class BookRepository extends Repository
     public function getBook(int $id): ?Book
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM book WHERE id = :id
+            SELECT * FROM books WHERE id = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -22,8 +22,8 @@ class BookRepository extends Repository
 
         return new Book(
             $book['title'],
-            $book['description'],
-            $book['image'],
+            $book['author'],
+            $book['image']
         );
     }
 
@@ -31,7 +31,7 @@ class BookRepository extends Repository
     {
         $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO books (title, description, created_at, id_assigned_by, image)
+            INSERT INTO books (title, author, created_at, id_assigned_by, image)
             VALUES (?, ?, ?, ?, ?)
         ');
 
@@ -39,10 +39,32 @@ class BookRepository extends Repository
 
         $stmt->execute([
             $book->getTitle(),
-            $book->getDescription(),
+            $book->getAuthor(),
             $date->format('Y-m-d'),
             $assingedById,
             $book->getImage()
+
         ]);
+    }
+
+    public function getBooks(): array
+    {
+        $result = [];
+
+        $stml = $this->database->connect()->prepare('
+            SELECT * FROM books;
+        ');
+        $stml->execute();
+        $books = $stml->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($books as $book) {
+            $result[] = new Book(
+                $book['title'],
+                $book['author'],
+                $book['image']
+            );
+        }
+
+        return $result;
     }
 }

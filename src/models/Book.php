@@ -2,13 +2,13 @@
 
 class Book {
     private $title;
-    private $description;
+    private $author;
     private $image;
 
-    public function __construct($title, $description, $image)
+    public function __construct($title, $author, $image)
     {
         $this->title = $title;
-        $this->description = $description;
+        $this->author = $author;
         $this->image = $image;
     }
 
@@ -22,14 +22,14 @@ class Book {
         $this->title = $title;
     }
 
-    public function getDescription()
+    public function getAuthor()
     {
-        return $this->description;
+        return $this->author;
     }
 
-    public function setDescription($description)
+    public function setAuthor($author)
     {
-        $this->description = $description;
+        $this->author = $author;
     }
 
     public function getImage()
