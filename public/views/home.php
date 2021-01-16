@@ -58,7 +58,17 @@
                     <div>
                         <h3><?= $book->getTitle(); ?></h3>
                         <p><?= $book->getAuthor(); ?></p>
-                        <i class="fas fa-star"> 10.0</i>
+                        <fieldset class="rating">
+                            <input class="input5" type="radio" id="5<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="5"/><label class="label5" for="5<?= $book->getId(); ?>" ></label>
+                            <input class="input4" type="radio" id="4<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="4"/><label class="label4" for="4<?= $book->getId(); ?>" ></label>
+                            <input class="input3" type="radio" id="3<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="3"/><label class="label3" for="3<?= $book->getId(); ?>" ></label>
+                            <input class="input2" type="radio" id="2<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="2"/><label class="label2" for="2<?= $book->getId(); ?>" ></label>
+                            <input class="input1" type="radio" id="1<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="1"/><label class="label1" for="1<?= $book->getId(); ?>" ></label>
+                        </fieldset>
+                        <div>
+                            <i class="fas fa-star" style="color: yellow"> (0.0)</i>
+                            <i class="fas fa-plus" style="color: forestgreen"></i>
+                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -73,7 +83,22 @@
         <div>
             <h3>title</h3>
             <p>author</p>
-            <i class="fas fa-star"> 0.0</i>
+            <fieldset class="rating">
+                <input class="input5" type="radio" id="" name="" value="5"/>
+                <label class="label5" for="" ></label>
+                <input class="input4" type="radio" id="" name="" value="4"/>
+                <label class="label4" for="" ></label>
+                <input class="input3" type="radio" id="" name="" value="3"/>
+                <label class="label3" for="" ></label>
+                <input class="input2" type="radio" id="" name="" value="2"/>
+                <label class="label2" for="" ></label>
+                <input class="input1" type="radio" id="" name="" value="1"/>
+                <label class="label1" for="" ></label>
+            </fieldset>
+            <div>
+                <i class="fas fa-star" style="color: yellow"> (0.0)</i>
+                <i class="fas fa-plus" style="color: forestgreen"></i>
+            </div>
         </div>
     </div>
 </template>

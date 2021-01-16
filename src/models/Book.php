@@ -1,16 +1,22 @@
 <?php
 
 class Book {
+    private $id;
     private $title;
     private $author;
     private $image;
-    private
 
-    public function __construct($title, $author, $image)
+    public function __construct($id, $title, $author, $image)
     {
+        $this->id = $id;
         $this->title = $title;
         $this->author = $author;
         $this->image = $image;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getTitle()

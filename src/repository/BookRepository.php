@@ -21,6 +21,7 @@ class BookRepository extends Repository
         }
 
         return new Book(
+            $book['id'],
             $book['title'],
             $book['author'],
             $book['image']
@@ -59,6 +60,7 @@ class BookRepository extends Repository
 
         foreach ($books as $book) {
             $result[] = new Book(
+                $book['id'],
                 $book['title'],
                 $book['author'],
                 $book['image']
