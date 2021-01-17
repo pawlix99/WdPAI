@@ -8,6 +8,8 @@ section.books {
 }
 
 .books>div>img {
+    box-shadow: 0px 1px 1px #00000040;
+    border: 1px solid #707070;
     height: 50%;
     width: 40%;
 }
@@ -37,9 +39,17 @@ section.books {
     justify-content: center;
     align-items: center;
     margin-top: 0.5em;
+    height: 3vh;
 }
 
-i + i {
+.books>div>div>div>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0.3em;
+}
+
+#plus {
     margin-left: 1.5em;
 }
 

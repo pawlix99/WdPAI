@@ -165,7 +165,7 @@ div.add-book>i {
 .add-book-button {
     background: #E3BC1F 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
-    border-radius: 44px;
+    border-radius: 20px;
     text-decoration: none;
 
     width: 40%;

@@ -34,7 +34,6 @@ class BookController extends AppController
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            // TODO create new project object and save it in database
             $book = new Book($_POST['title'], $_POST['author'], $_FILES['file']['name']);
             $this->bookRepository->addBook($book);
 
@@ -62,6 +61,21 @@ class BookController extends AppController
         }
     }
 
+    public function vote(int $id) {
+        $this->bookRepository->vote($id);
+        http_response_code(200);
+    }
+
+    public function addRate(int $id, int $rate) {
+        $this->bookRepository->addRate($id, $rate);
+        http_response_code(200);
+    }
+
+    public function averageRate(int $id, int $rate) {
+        $this->bookRepository->averageRate($id, $rate);
+        http_response_code(200);
+    }
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {
@@ -75,4 +89,5 @@ class BookController extends AppController
         }
         return true;
     }
+
 }

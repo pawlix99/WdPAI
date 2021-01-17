@@ -66,10 +66,13 @@ function createBook(book) {
     input1.name = book.id;
     const label1 = clone.querySelector("label[class='label1']");
     label1.htmlFor = "1"+book.id;
-
-
-    const total_value = clone.querySelector(".fa-star");
-    total_value.innerText = book.total_value;
+    const input = clone.querySelector("input[type='hidden']");
+    input.className = book.total_votes;
+    input.value = book.total_value;
+    const average = clone.querySelector("h5[name='average']");
+    average.innerHTML = "(" + Math.round(((book.total_value/book.total_votes) + Number.EPSILON) * 100) / 100 + ")";
+    const votes = clone.querySelector("h5[name='votes']");
+    votes.innerHTML = "(" + book.total_votes + ")";
 
     bookContainer.appendChild(clone);
 }

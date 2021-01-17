@@ -6,6 +6,7 @@
 
     <script src="https://kit.fontawesome.com/55ca12752b.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="public/js/search.js" defer></script>
+    <script type="text/javascript" src="public/js/statistics.js" defer></script>
     <title>HOME</title>
 </head>
 
@@ -53,24 +54,29 @@
             </section>
             <section class="books">
                 <?php foreach ($books as $book): ?>
-                <div id="book-1">
-                    <img src="public/uploads/<?= $book->getImage(); ?>">
-                    <div>
-                        <h3><?= $book->getTitle(); ?></h3>
-                        <p><?= $book->getAuthor(); ?></p>
-                        <fieldset class="rating">
-                            <input class="input5" type="radio" id="5<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="5"/><label class="label5" for="5<?= $book->getId(); ?>" ></label>
-                            <input class="input4" type="radio" id="4<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="4"/><label class="label4" for="4<?= $book->getId(); ?>" ></label>
-                            <input class="input3" type="radio" id="3<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="3"/><label class="label3" for="3<?= $book->getId(); ?>" ></label>
-                            <input class="input2" type="radio" id="2<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="2"/><label class="label2" for="2<?= $book->getId(); ?>" ></label>
-                            <input class="input1" type="radio" id="1<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="1"/><label class="label1" for="1<?= $book->getId(); ?>" ></label>
-                        </fieldset>
+                    <div id="<?= $book->getId(); ?>">
+                        <img src="public/uploads/<?= $book->getImage(); ?>">
                         <div>
-                            <i class="fas fa-star" style="color: yellow"> (0.0)</i>
-                            <i class="fas fa-plus" style="color: forestgreen"></i>
+                            <h3><?= $book->getTitle(); ?></h3>
+                            <p><?= $book->getAuthor(); ?></p>
+                            <fieldset class="rating">
+                                <input class="input5" type="radio" id="5<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="5"  /><label class="label5" for="5<?= $book->getId(); ?>" ></label>
+                                <input class="input4" type="radio" id="4<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="4"  /><label class="label4" for="4<?= $book->getId(); ?>" ></label>
+                                <input class="input3" type="radio" id="3<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="3"  /><label class="label3" for="3<?= $book->getId(); ?>" ></label>
+                                <input class="input2" type="radio" id="2<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="2"  /><label class="label2" for="2<?= $book->getId(); ?>" ></label>
+                                <input class="input1" type="radio" id="1<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="1"  /><label class="label1" for="1<?= $book->getId(); ?>" ></label>
+                                <input class="<?= $book->getTotalVotes(); ?>" type="hidden" value="<?= $book->getTotalValue(); ?>"/>
+                            </fieldset>
+                            <div>
+                                <i name="star" class="fas fa-star" style="color: yellow"></i>
+                                <div>
+                                    <h5 name="average">(<?= $book->getAverageRate(); ?>)</h5>
+                                    <h5 name="votes">(<?= $book->getTotalVotes(); ?>)</h5>
+                                </div>
+                                <i id="plus" class="fas fa-plus" style="color: forestgreen"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </section>
         </main>
@@ -84,19 +90,19 @@
             <h3>title</h3>
             <p>author</p>
             <fieldset class="rating">
-                <input class="input5" type="radio" id="" name="" value="5"/>
-                <label class="label5" for="" ></label>
-                <input class="input4" type="radio" id="" name="" value="4"/>
-                <label class="label4" for="" ></label>
-                <input class="input3" type="radio" id="" name="" value="3"/>
-                <label class="label3" for="" ></label>
-                <input class="input2" type="radio" id="" name="" value="2"/>
-                <label class="label2" for="" ></label>
-                <input class="input1" type="radio" id="" name="" value="1"/>
-                <label class="label1" for="" ></label>
+                <input class="input5" type="radio" id="" name="" value="5"/><label class="label5" for="" ></label>
+                <input class="input4" type="radio" id="" name="" value="4"/><label class="label4" for="" ></label>
+                <input class="input3" type="radio" id="" name="" value="3"/><label class="label3" for="" ></label>
+                <input class="input2" type="radio" id="" name="" value="2"/><label class="label2" for="" ></label>
+                <input class="input1" type="radio" id="" name="" value="1"/><label class="label1" for="" ></label>
+                <input class="" type="hidden" value=""/>
             </fieldset>
             <div>
-                <i class="fas fa-star" style="color: yellow"> (0.0)</i>
+                <i class="fas fa-star" style="color: yellow"></i>
+                <div>
+                    <h5 name="average"></h5>
+                    <h5 name="votes"></h5>
+                </div>
                 <i class="fas fa-plus" style="color: forestgreen"></i>
             </div>
         </div>

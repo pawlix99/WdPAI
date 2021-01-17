@@ -53,7 +53,7 @@ class BookRepository extends Repository
         $result = [];
 
         $stml = $this->database->connect()->prepare('
-            SELECT * FROM books;
+            SELECT * FROM books
         ');
         $stml->execute();
         $books = $stml->fetchAll(PDO::FETCH_ASSOC);
@@ -63,7 +63,10 @@ class BookRepository extends Repository
                 $book['id'],
                 $book['title'],
                 $book['author'],
-                $book['image']
+                $book['image'],
+                $book['total_votes'],
+                $book['total_value'],
+                $book['average_rate']
             );
         }
 
@@ -81,5 +84,37 @@ class BookRepository extends Repository
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function vote(int $id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE books SET total_votes = total_votes + 1 WHERE id = :id
+        ');
+
+        $stmt->bindParam(':id',$id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function addRate(int $id, int $rate)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE books SET total_value = total_value + :rate WHERE id = :id
+        ');
+
+        $stmt->bindParam(':id',$id, PDO::PARAM_INT);
+        $stmt->bindParam(':rate',$rate, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function averageRate(int $id, int $rate)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE books SET average_rate = (total_value + :rate) / (total_votes + 1)  WHERE id = :id
+        ');
+
+        $stmt->bindParam(':id',$id, PDO::PARAM_INT);
+        $stmt->bindParam(':rate',$rate, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

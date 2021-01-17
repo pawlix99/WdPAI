@@ -11,5 +11,9 @@ Router::post('login', 'SecurityController');
 Router::post('addBook', 'BookController');
 Router::post('register','SecurityController');
 Router::post('search','BookController');
+Router::get('vote', 'BookController');
+Router::get('addRate', 'BookController');
+Router::get('averageRate', 'BookController');
+
 
 Router::run($path);
