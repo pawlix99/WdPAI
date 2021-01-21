@@ -39,7 +39,7 @@ class BookController extends AppController
 
             return $this->render('home', [
                 'messages' => $this->message,
-                'home' => $this->bookRepository->getBooks()
+                'books' => $this->bookRepository->getBooks()
             ]);
         }
 

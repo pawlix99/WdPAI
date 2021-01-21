@@ -1,23 +1,23 @@
 <?php
 
 class Book {
-    private $id;
     private $title;
     private $author;
     private $image;
     private $total_votes;
     private $total_value;
-    private $average_rate;
+    private $id;
 
-    public function __construct($id = null, $title, $author, $image, $total_votes = 0, $total_value = 0, $average_rate = 0.0)
+
+    public function __construct($title, $author, $image, $total_votes = 0, $total_value = 0, $id = null)
     {
-        $this->id = $id;
         $this->title = $title;
         $this->author = $author;
         $this->image = $image;
         $this->total_votes = $total_votes;
         $this->total_value = $total_value;
-        $this->average_rate = $average_rate;
+        $this->id = $id;
+
     }
 
     public function getId()

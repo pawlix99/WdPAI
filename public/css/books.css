@@ -115,15 +115,6 @@ fieldset > label{
     width: 20%;
 }
 
-fieldset > input:checked ~ label,
-fieldset:not(:checked) > label:hover,
-fieldset:not(:checked) > label:hover ~ label{
+fieldset > input:checked ~ label{
     color: #fffc1c;
-}
-
-fieldset > input:checked + label:hover,
-fieldset > input:checked ~ label:hover,
-fieldset > label:hover ~ input:checked ~ label,
-fieldset > input:checked ~ label:hover ~ label{
-    color: #ffcf1e
 }

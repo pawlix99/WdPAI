@@ -103,9 +103,9 @@ header {
     width: 100%;
     height: 30%;
     background: #FFFFFF4D 0% 0% no-repeat padding-box;
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
     flex-direction: column;
 }
 
@@ -114,10 +114,20 @@ section {
     background: #FFFFFF70 0% 0% no-repeat padding-box;
 }
 
+header>div {
+    width: 100%;
+}
+
+header>div>a {
+    text-decoration: none;
+    color: black;
+    float: right;
+    padding-right: 1em;
+    padding-top: 1em;
+}
+
 header>img {
     height: 50%;
-    margin-top: 2em;
-    margin-bottom: 1em;
 }
 
 ul {

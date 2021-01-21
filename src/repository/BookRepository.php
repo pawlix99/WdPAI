@@ -2,6 +2,8 @@
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/Book.php';
+require_once __DIR__.'/../models/User.php';
+require_once 'UserRepository.php';
 
 class BookRepository extends Repository
 {
@@ -21,7 +23,6 @@ class BookRepository extends Repository
         }
 
         return new Book(
-            $book['id'],
             $book['title'],
             $book['author'],
             $book['image']
@@ -37,7 +38,8 @@ class BookRepository extends Repository
         ');
 
         //TODO you should get this value from logged user session
-        $assingedById = 1;
+        session_start();
+        $assingedById = $_SESSION['userId'];
 
         $stmt->execute([
             $book->getTitle(),
@@ -46,27 +48,28 @@ class BookRepository extends Repository
             $assingedById,
             $book->getImage()
         ]);
+
+
     }
 
     public function getBooks(): array
     {
         $result = [];
 
-        $stml = $this->database->connect()->prepare('
+        $stmt = $this->database->connect()->prepare('
             SELECT * FROM books
         ');
-        $stml->execute();
-        $books = $stml->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($books as $book) {
             $result[] = new Book(
-                $book['id'],
                 $book['title'],
                 $book['author'],
                 $book['image'],
                 $book['total_votes'],
                 $book['total_value'],
-                $book['average_rate']
+                $book['id']
             );
         }
 

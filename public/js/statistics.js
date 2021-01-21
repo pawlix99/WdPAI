@@ -24,7 +24,10 @@ function giveRate() {
         .then(function () {
             averageOutput.innerHTML = "("+Math.round((((parseFloat(value) + parseFloat(rate))/(parseFloat(votes) + 1)) + Number.EPSILON) * 100 )/100+")";
         });
-
+    stars.parentElement.disabled = true;
+    $name = stars.parentElement.getAttribute('id');
+    $value = rate;
+    document.cookie = $name + "=" + $value;
 }
 
 starButtons.forEach(button => button.addEventListener("click", giveRate));

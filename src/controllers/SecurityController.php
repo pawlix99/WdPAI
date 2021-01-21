@@ -37,6 +37,10 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
+        session_start();
+        $userId = $this->userRepository->getUserId($user);
+        $_SESSION['loggedin'] = true;
+        $_SESSION['userId'] = $userId;
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
@@ -52,7 +56,6 @@ class SecurityController extends AppController {
         $confirmedPassword = $_POST['confirmedPassword'];
         $name = $_POST['name'];
         $surname = $_POST['surname'];
-        $phone = $_POST['phone'];
 
         if ($password !== $confirmedPassword) {
             return $this->render('register', ['messages' => ['Please provide proper password']]);
