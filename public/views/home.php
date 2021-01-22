@@ -78,8 +78,8 @@ if(isset($_GET['logout'])=='activity') {
                     <div id="<?= $book->getId(); ?>">
                         <img src="public/uploads/<?= $book->getImage(); ?>">
                         <div>
-                            <h3><?= $book->getTitle(); ?></h3>
-                            <p><?= $book->getAuthor(); ?></p>
+                            <h4><?= $book->getTitle(); ?></h4>
+                            <h5><?= $book->getAuthor(); ?></h5>
                             <fieldset id="<?= $name; ?>" class="rating" <?php echo ($_COOKIE[$name]>'0')?'disabled':'' ?>>
                                 <input class="input5" type="radio" id="5<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="5" <?php echo ($_COOKIE[$name]=='5')?'checked':'' ?> /><label class="label5" for="5<?= $book->getId(); ?>" ></label>
                                 <input class="input4" type="radio" id="4<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="4" <?php echo ($_COOKIE[$name]=='4')?'checked':'' ?> /><label class="label4" for="4<?= $book->getId(); ?>" ></label>

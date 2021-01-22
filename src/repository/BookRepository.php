@@ -57,7 +57,7 @@ class BookRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM books
+            SELECT * FROM books ORDER BY id
         ');
         $stmt->execute();
         $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -115,7 +115,7 @@ class BookRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM books ORDER BY total_value / total_votes DESC LIMIT 10
+            SELECT * FROM books WHERE total_votes>0 ORDER BY total_value / total_votes DESC LIMIT 10 
         ');
         $stmt->execute();
         $averages = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -139,7 +139,7 @@ class BookRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM books ORDER BY total_votes DESC LIMIT 10
+            SELECT * FROM books WHERE total_votes>0 ORDER BY total_votes DESC LIMIT 10 
         ');
         $stmt->execute();
         $tops = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -157,4 +157,6 @@ class BookRepository extends Repository
 
         return $result;
     }
+
+
 }
