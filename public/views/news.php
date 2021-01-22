@@ -39,9 +39,8 @@ if(isset($_GET['logout'])=='activity') {
     <link rel="stylesheet" type="text/css" href="public/css/books.css">
 
     <script src="https://kit.fontawesome.com/55ca12752b.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="public/js/search.js" defer></script>
     <script type="text/javascript" src="public/js/statistics.js" defer></script>
-    <title>HOME</title>
+    <title>NEWS</title>
 </head>
 
 <body>

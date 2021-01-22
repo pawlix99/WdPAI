@@ -20,10 +20,8 @@ function giveRate() {
             container.querySelector("input[type='hidden']").setAttribute('value', parseInt(value) + parseInt(rate));
         });
 
-    fetch(`/averageRate/${id}/${rate}`)
-        .then(function () {
-            averageOutput.innerHTML = "("+Math.round((((parseFloat(value) + parseFloat(rate))/(parseFloat(votes) + 1)) + Number.EPSILON) * 100 )/100+")";
-        });
+    averageOutput.innerHTML = "("+Math.round((((parseFloat(value) + parseFloat(rate))/(parseFloat(votes) + 1)) + Number.EPSILON) * 100 )/100+")";
+
     stars.parentElement.disabled = true;
     $name = stars.parentElement.getAttribute('id');
     $value = rate;

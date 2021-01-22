@@ -110,14 +110,51 @@ class BookRepository extends Repository
         $stmt->execute();
     }
 
-    public function averageRate(int $id, int $rate)
+    public function getTopAverageBooks(): array
     {
-        $stmt = $this->database->connect()->prepare('
-            UPDATE books SET average_rate = (total_value + :rate) / (total_votes + 1)  WHERE id = :id
-        ');
+        $result = [];
 
-        $stmt->bindParam(':id',$id, PDO::PARAM_INT);
-        $stmt->bindParam(':rate',$rate, PDO::PARAM_INT);
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM books ORDER BY total_value / total_votes DESC LIMIT 10
+        ');
         $stmt->execute();
+        $averages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($averages as $book) {
+            $result[] = new Book(
+                $book['title'],
+                $book['author'],
+                $book['image'],
+                $book['total_votes'],
+                $book['total_value'],
+                $book['id']
+            );
+        }
+
+        return $result;
+    }
+
+    public function getTopVotedBooks(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM books ORDER BY total_votes DESC LIMIT 10
+        ');
+        $stmt->execute();
+        $tops = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($tops as $book) {
+            $result[] = new Book(
+                $book['title'],
+                $book['author'],
+                $book['image'],
+                $book['total_votes'],
+                $book['total_value'],
+                $book['id']
+            );
+        }
+
+        return $result;
     }
 }

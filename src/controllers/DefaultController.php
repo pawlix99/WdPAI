@@ -16,7 +16,4 @@ class DefaultController extends AppController{
         $this->render('my_library');
     }
 
-    public function rankings() {
-        $this->render('rankings');
-    }
 }

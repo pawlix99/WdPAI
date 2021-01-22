@@ -26,6 +26,13 @@ class BookController extends AppController
         $this->render('home', ['books' => $books]);
     }
 
+    public function rankings()
+    {
+        $averages = $this->bookRepository->getTopAverageBooks();
+        $tops = $this->bookRepository->getTopVotedBooks();
+        $this->render('rankings', ['averages' => $averages, 'tops' => $tops]);
+    }
+
     public function addBook()
     {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -68,11 +75,6 @@ class BookController extends AppController
 
     public function addRate(int $id, int $rate) {
         $this->bookRepository->addRate($id, $rate);
-        http_response_code(200);
-    }
-
-    public function averageRate(int $id, int $rate) {
-        $this->bookRepository->averageRate($id, $rate);
         http_response_code(200);
     }
 

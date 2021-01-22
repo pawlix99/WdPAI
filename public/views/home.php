@@ -75,7 +75,6 @@ if(isset($_GET['logout'])=='activity') {
                         setcookie($name, $value);
                     }
                 ?>
-
                     <div id="<?= $book->getId(); ?>">
                         <img src="public/uploads/<?= $book->getImage(); ?>">
                         <div>

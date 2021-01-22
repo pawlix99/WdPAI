@@ -36,12 +36,11 @@ if(isset($_GET['logout'])=='activity') {
 ?>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="public/css/books.css">
+    <link rel="stylesheet" type="text/css" href="public/css/rankings.css">
 
     <script src="https://kit.fontawesome.com/55ca12752b.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="public/js/search.js" defer></script>
     <script type="text/javascript" src="public/js/statistics.js" defer></script>
-    <title>HOME</title>
+    <title>RANKINGS</title>
 </head>
 
 <body>
@@ -50,13 +49,48 @@ if(isset($_GET['logout'])=='activity') {
         <header>
             <?php include('header.php')?>
         </header>
-        <section>
-            <div class="top-average">
-
+        <section class="rankings">
+            <div class="averages">
+                <h2>TOP 10 BOOKS BY AVERAGE</h2>
+                <div class="top-averages">
+                    <?php foreach ($averages as $book):?>
+                        <div>
+                            <img src="public/uploads/<?= $book->getImage(); ?>">
+                            <div>
+                                <h3><?= $book->getTitle(); ?></h3>
+                                <p><?= $book->getAuthor(); ?></p>
+                                <div>
+                                    <i name="star" class="fas fa-star" style="color: yellow"></i>
+                                    <div>
+                                        <h5 name="average">(<?= $book->getAverageRate(); ?>)</h5>
+                                        <h5 name="votes">(<?= $book->getTotalVotes(); ?>)</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
-            <div class="top-votes">
-
-            </div>
+            <div class="votes">
+                <h2>TOP 10 BOOKS BY VOTES</h2>
+                <div class="top-votes">
+                    <?php foreach ($tops as $book):?>
+                        <div id="<?= $book->getId(); ?>">
+                            <img src="public/uploads/<?= $book->getImage(); ?>">
+                            <div>
+                                <h3><?= $book->getTitle(); ?></h3>
+                                <p><?= $book->getAuthor(); ?></p>
+                                <div>
+                                    <i name="star" class="fas fa-star" style="color: yellow"></i>
+                                    <div>
+                                        <h5 name="average">(<?= $book->getAverageRate(); ?>)</h5>
+                                        <h5 name="votes">(<?= $book->getTotalVotes(); ?>)</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
         </section>
     </main>
 </div>

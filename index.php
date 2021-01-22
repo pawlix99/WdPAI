@@ -16,7 +16,7 @@ Router::get('addRate', 'BookController');
 Router::get('averageRate', 'BookController');
 Router::get('news', 'DefaultController');
 Router::get('my_library', 'DefaultController');
-Router::get('rankings', 'DefaultController');
+Router::get('rankings', 'BookController');
 
 
 Router::run($path);
