@@ -7,7 +7,6 @@ require_once 'UserRepository.php';
 
 class BookRepository extends Repository
 {
-
     public function getBook(int $id): ?Book
     {
         $stmt = $this->database->connect()->prepare('
@@ -37,7 +36,6 @@ class BookRepository extends Repository
             VALUES (?, ?, ?, ?, ?)
         ');
 
-        //TODO you should get this value from logged user session
         session_start();
         $assingedById = $_SESSION['userId'];
 
@@ -48,8 +46,6 @@ class BookRepository extends Repository
             $assingedById,
             $book->getImage()
         ]);
-
-
     }
 
     public function getBooks(): array
@@ -158,5 +154,22 @@ class BookRepository extends Repository
         return $result;
     }
 
+    public function getLikedBooks(): array
+    {
+        session_start();
+        $result = [];
 
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM users_books WHERE id_users = :id_users
+        ');
+        $stmt->bindParam(':id_users',$_SESSION['userId'], PDO::PARAM_INT);
+        $stmt->execute();
+        $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($books as $book) {
+            array_push($result, $book['id_books']);
+        }
+
+        return $result;
+    }
 }

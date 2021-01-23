@@ -13,10 +13,10 @@ Router::post('register','SecurityController');
 Router::post('search','BookController');
 Router::get('vote', 'BookController');
 Router::get('addRate', 'BookController');
-Router::get('averageRate', 'BookController');
 Router::get('news', 'DefaultController');
-Router::get('my_library', 'DefaultController');
+Router::get('my_library', 'LibraryController');
 Router::get('rankings', 'BookController');
+Router::post('giveLike', 'LibraryController');
 
 
 Router::run($path);

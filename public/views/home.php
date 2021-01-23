@@ -3,9 +3,7 @@
 
 session_start();
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-}
-else {
+if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
     $url = "http://$_SERVER[HTTP_HOST]";
     header("Location: {$url}/login");
 }
@@ -94,7 +92,12 @@ if(isset($_GET['logout'])=='activity') {
                                     <h5 name="average">(<?= $book->getAverageRate(); ?>)</h5>
                                     <h5 name="votes">(<?= $book->getTotalVotes(); ?>)</h5>
                                 </div>
-                                <i id="plus" class="fas fa-plus" style="color: forestgreen"></i>
+                                <form action="giveLike" method="POST" <?php echo (in_array($book->getId(), $likedBooks))?'hidden':'' ?>>
+                                    <input name="id" type="hidden" value="<?= $book->getId(); ?>">
+                                    <button class="plus" type="submit" >
+                                        <i class="fas fa-plus" style="color: green"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -116,8 +119,8 @@ if(isset($_GET['logout'])=='activity') {
             <div>
                 <i class="fas fa-star" style="color: yellow"></i>
                 <div>
-                    <h5 name="average"></h5>
-                    <h5 name="votes"></h5>
+                    <h5 id="average"></h5>
+                    <h5 id="votes"></h5>
                 </div>
             </div>
         </div>

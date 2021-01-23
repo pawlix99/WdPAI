@@ -23,7 +23,8 @@ class BookController extends AppController
     public function home()
     {
         $books = $this->bookRepository->getBooks();
-        $this->render('home', ['books' => $books]);
+        $likedBooks = $this->bookRepository->getLikedBooks();
+        $this->render('home', ['books' => $books, 'likedBooks' => $likedBooks]);
     }
 
     public function rankings()
