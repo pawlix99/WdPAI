@@ -91,6 +91,8 @@ section {
 
 header>div {
     width: 100%;
+    flex-direction: row;
+    padding-top: 1em;
 }
 
 header>div>a {
@@ -98,7 +100,11 @@ header>div>a {
     color: black;
     float: right;
     padding-right: 1em;
-    padding-top: 1em;
+}
+
+header>div>div {
+    float: right;
+    padding-right: 1em;
 }
 
 header>img {

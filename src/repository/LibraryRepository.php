@@ -48,9 +48,4 @@ class LibraryRepository extends Repository
             $id
         ]);
     }
-
-    public function isLiked()
-    {
-
-    }
 }

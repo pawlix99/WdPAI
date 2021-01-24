@@ -17,6 +17,7 @@ Router::get('news', 'DefaultController');
 Router::get('my_library', 'LibraryController');
 Router::get('rankings', 'BookController');
 Router::post('giveLike', 'LibraryController');
+Router::post('deleteBook', 'BookController');
 
 
 Router::run($path);

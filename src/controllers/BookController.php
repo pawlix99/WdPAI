@@ -93,4 +93,11 @@ class BookController extends AppController
         return true;
     }
 
+    public function deleteBook() {
+        $id = $_POST('id');
+        $this->bookRepository->deleteBook($id);
+        $books = $this->bookRepository->getBooks();
+        $likedBooks = $this->bookRepository->getLikedBooks();
+        $this->render('home', ['books' => $books, 'likedBooks' => $likedBooks]);
+    }
 }

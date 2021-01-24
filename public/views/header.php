@@ -1,5 +1,6 @@
 <div class="logout">
     <a href="<?php isset($_GET['login']) ? $_SERVER['REQUEST_URI'] : null ?>?logout=activity" class="fas fa-power-off"></a>
+    <div><?php echo $_SESSION['role'] ?></div>
 </div>
 <img src="public/img/logo.svg">
 <ul>

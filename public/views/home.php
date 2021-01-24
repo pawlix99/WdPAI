@@ -74,6 +74,12 @@ if(isset($_GET['logout'])=='activity') {
                     }
                 ?>
                     <div id="<?= $book->getId(); ?>">
+                        <form action="deleteBook" method="POST" <?php echo ($_SESSION['userId']>'1')?'hidden':'' ?>>
+                            <input name="id" type="hidden" value="<?= $book->getId(); ?>">
+                            <button class="delete" type="submit" >
+                                <i class="fas fa-times" style="color: red"></i>
+                            </button>
+                        </form>
                         <img src="public/uploads/<?= $book->getImage(); ?>">
                         <div>
                             <h4><?= $book->getTitle(); ?></h4>

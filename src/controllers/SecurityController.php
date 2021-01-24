@@ -41,6 +41,10 @@ class SecurityController extends AppController {
         $userId = $this->userRepository->getUserId($user);
         $_SESSION['loggedin'] = true;
         $_SESSION['userId'] = $userId;
+        if($userId == 1){
+            $_SESSION['role'] = "ADMIN";
+        }
+        else $_SESSION['role'] = "USER";
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
