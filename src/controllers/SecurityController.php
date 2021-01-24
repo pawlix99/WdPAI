@@ -21,7 +21,7 @@ class SecurityController extends AppController {
         }
 
         $email = $_POST['email'];
-        $password = md5($_POST['password']);
+        $password = hash("sha256", $_POST['password']);
 
         $user = $this->userRepository->getUser($email);
 
@@ -56,8 +56,8 @@ class SecurityController extends AppController {
         }
 
         $email = $_POST['email'];
-        $password = $_POST['password'];
-        $confirmedPassword = $_POST['confirmedPassword'];
+        $password = hash("sha256", $_POST['password']);
+        $confirmedPassword = hash("sha256", $_POST['confirmedPassword']);
         $name = $_POST['name'];
         $surname = $_POST['surname'];
 
@@ -66,7 +66,7 @@ class SecurityController extends AppController {
         }
 
         //TODO try to use better hash function
-        $user = new User($email, md5($password), $name, $surname);
+        $user = new User($email, $password, $name, $surname);
 
         $this->userRepository->addUser($user);
 

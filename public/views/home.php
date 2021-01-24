@@ -90,7 +90,7 @@ if(isset($_GET['logout'])=='activity') {
                                 <input class="input3" type="radio" id="3<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="3" <?php echo ($_COOKIE[$name]=='3')?'checked':'' ?> /><label class="label3" for="3<?= $book->getId(); ?>" ></label>
                                 <input class="input2" type="radio" id="2<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="2" <?php echo ($_COOKIE[$name]=='2')?'checked':'' ?> /><label class="label2" for="2<?= $book->getId(); ?>" ></label>
                                 <input class="input1" type="radio" id="1<?= $book->getId(); ?>" name="<?= $book->getId(); ?>" value="1" <?php echo ($_COOKIE[$name]=='1')?'checked':'' ?> /><label class="label1" for="1<?= $book->getId(); ?>" ></label>
-                                <input class="<?= $book->getTotalVotes(); ?>" type="hidden" value="<?= $book->getTotalValue(); ?>"/>
+                                <input id="6" class="<?= $book->getTotalVotes(); ?>" type="hidden" value="<?= $book->getTotalValue(); ?>"/>
                             </fieldset>
                             <div>
                                 <i name="star" class="fas fa-star" style="color: yellow"></i>
@@ -98,7 +98,7 @@ if(isset($_GET['logout'])=='activity') {
                                     <h5 name="average">(<?= $book->getAverageRate(); ?>)</h5>
                                     <h5 name="votes">(<?= $book->getTotalVotes(); ?>)</h5>
                                 </div>
-                                <form action="giveLike" method="POST" <?php echo (in_array($book->getId(), $likedBooks))?'hidden':'' ?>>
+                                <form action="giveLike" method="POST" <?php if(is_array($likedBooks)) echo (in_array($book->getId(), $likedBooks))?'hidden':'' ?>>
                                     <input name="id" type="hidden" value="<?= $book->getId(); ?>">
                                     <button class="plus" type="submit" >
                                         <i class="fas fa-plus" style="color: green"></i>

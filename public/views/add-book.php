@@ -20,7 +20,7 @@ if(isset($_GET['news'])=='activity') {
 
 if(isset($_GET['my_library'])=='activity') {
     $url = "http://$_SERVER[HTTP_HOST]";
-    header("Location: {$url}/my library");
+    header("Location: {$url}/my_library");
 }
 
 if(isset($_GET['rankings'])=='activity') {

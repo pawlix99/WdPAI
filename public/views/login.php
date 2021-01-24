@@ -4,6 +4,12 @@ session_start();
 if(isset($_SESSION['userId'])) {
     session_destroy();
 }
+
+if(isset($_GET['register'])=='activity') {
+    $url = "http://$_SERVER[HTTP_HOST]";
+    header("Location: {$url}/register");
+}
+
 ?>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
@@ -28,6 +34,7 @@ if(isset($_SESSION['userId'])) {
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
                 <button type="submit" >LOGIN</button>
+                <a href="<?php isset($_GET['home']) ? $_SERVER['REQUEST_URI'] : null ?>?register=activity" class="button">REGISTER</a>
             </form>
         </div>
     </div>

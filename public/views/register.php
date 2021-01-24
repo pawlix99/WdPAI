@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-
+<?php
+if(isset($_GET['register'])=='activity') {
+    $url = "http://$_SERVER[HTTP_HOST]";
+    header("Location: {$url}/login");
+}
+?>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <script type="text/javascript" src="./public/js/script.js" defer></script>
@@ -28,6 +33,7 @@
             <input name="name" type="text" placeholder="name">
             <input name="surname" type="text" placeholder="surname">
             <button type="submit">REGISTER</button>
+            <a href="<?php isset($_GET['home']) ? $_SERVER['REQUEST_URI'] : null ?>?register=activity" class="button">LOGIN</a>
         </form>
     </div>
 </div>

@@ -89,4 +89,7 @@ section.rankings {
     .top-averages, .top-votes {
         grid-template-columns: repeat(1, 1fr);
     }
+    .rankings>div>div>div {
+        height: 30vh;
+    }
 }

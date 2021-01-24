@@ -122,4 +122,7 @@ fieldset > input:checked ~ label{
         overflow: auto;
         -webkit-overflow-scrolling: touch;
     }
+    .books>div {
+        height: 30vh;
+    }
 }

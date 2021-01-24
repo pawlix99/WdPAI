@@ -94,10 +94,7 @@ class BookController extends AppController
     }
 
     public function deleteBook() {
-        $id = $_POST('id');
-        $this->bookRepository->deleteBook($id);
-        $books = $this->bookRepository->getBooks();
-        $likedBooks = $this->bookRepository->getLikedBooks();
-        $this->render('home', ['books' => $books, 'likedBooks' => $likedBooks]);
-    }
+        $this->bookRepository->deleteBook($_POST['id']);
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/home");    }
 }

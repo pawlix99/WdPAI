@@ -142,9 +142,14 @@ button.delete {
 }
 
 section>div>form {
-    height: 100%;
+    height: 2em;
     margin: 0;
     width: 80%;
+}
+
+section.add-book>div>form {
+    height: fit-content;
+    width: fit-content;
 }
 
 @media only screen and (max-device-width: 420px) {
@@ -154,5 +159,8 @@ section>div>form {
     .add-book>a {
         line-height: 0;
         font-size: 0;
+    }
+    .books>div {
+        height: 30vh;
     }
 }

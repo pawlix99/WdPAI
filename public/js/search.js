@@ -46,7 +46,11 @@ function createBook(book) {
     input.className = book.total_votes;
     input.value = book.total_value;
     const average = clone.querySelector("h5[id='average']");
-    average.innerHTML = "(" + Math.round(((book.total_value/book.total_votes) + Number.EPSILON) * 100) / 100 + ")";
+    if (book.total_votes == '0') {
+        average.innerHTML = 0;
+    } else {
+        average.innerHTML = "(" + Math.round(((book.total_value / book.total_votes) + Number.EPSILON) * 100) / 100 + ")";
+    }
     const votes = clone.querySelector("h5[id='votes']");
     votes.innerHTML = "(" + book.total_votes + ")";
 
