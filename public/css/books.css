@@ -129,3 +129,9 @@ section>div>div>div>form {
     align-items: center;
     padding-left: 1.5em;
 }
+
+@media only screen and (max-device-width: 420px) {
+    section.books{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

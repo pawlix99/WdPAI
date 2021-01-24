@@ -77,16 +77,16 @@ section.rankings {
     padding: 0 2em 2em 2em;
 }
 
-.top-averages {
+.top-averages, .top-votes {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2em;
 }
 
-.top-votes {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2em;
+@media only screen and (max-device-width: 420px) {
+
+    .top-averages, .top-votes {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

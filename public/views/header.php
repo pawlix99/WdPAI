@@ -5,8 +5,8 @@
 <ul>
     <li>
         <a href="<?php isset($_GET['home']) ? $_SERVER['REQUEST_URI'] : null ?>?home=activity" class="button">
-        <i class="fas fa-home"></i>
-        HOME
+            <i class="fas fa-home"></i>
+            HOME
         </a>
     </li>
     <li>

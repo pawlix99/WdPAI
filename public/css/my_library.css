@@ -115,3 +115,11 @@ fieldset > label{
 fieldset > input:checked ~ label{
     color: #fffc1c;
 }
+
+@media only screen and (max-device-width: 420px) {
+    .books {
+        grid-template-columns: repeat(2, 1fr);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
